@@ -1,4 +1,4 @@
-import 'package:bmd_v2/app/splash_page.dart';
+import 'package:bmd_v2/app/routing/app_router.dart';
 import 'package:flutter/material.dart';
 
 class BmdApp extends StatelessWidget {
@@ -6,10 +6,10 @@ class BmdApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
+      routerConfig: appRouter,
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: const SplashPage(),
     );
   }
 }
