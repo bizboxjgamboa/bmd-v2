@@ -10,5 +10,13 @@ abstract class AppRoutes {
 
   static const login = AppRoute('login', '/login');
 
-  static const home = AppRoute('home', '/home');
+  static const home = AppRoute('home', '/');
+
+  static const schedule = AppRoute('schedule', '/schedule');
+
+  static const visits = AppRoute('visits', '/visits');
+
+  static const messages = AppRoute('messages', '/messages');
+
+  static const profile = AppRoute('profile', '/profile');
 }

@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'dart:ui';
-import 'package:bmd_v2/features/auth/login_page.dart';
+import 'package:bmd_v2/app/routing/navigation_extensions.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -56,24 +56,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
           ..addStatusListener((status) {
             if (status == AnimationStatus.completed) {
               debugPrint('finished');
-              // Navigator.of(context).pushReplacement(
-              //   MaterialPageRoute(builder: (_) => const LoginScreen()),
-              // );
-              Navigator.of(context).pushReplacement(
-                PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) =>
-                      const LoginPage(),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) =>
-                          FadeTransition(
-                            opacity: CurvedAnimation(
-                              parent: animation,
-                              curve: Curves.easeIn,
-                            ),
-                            child: child,
-                          ),
-                ),
-              );
+              context.goLogin();
             }
           })
           ..forward();

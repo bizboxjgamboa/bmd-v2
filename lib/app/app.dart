@@ -7,7 +7,7 @@ class BmdApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'BizBox MD',
       routerConfig: appRouter,
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
     );
