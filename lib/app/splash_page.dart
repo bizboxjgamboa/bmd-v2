@@ -31,7 +31,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   late Animation<double> _blueSize;
   bool _showBlueCircle = false;
 
-  static const int particleCount = 12;
+  static const int _particleCount = 12;
 
   // ─────────────────────────────────────────────
   // HELPERS
@@ -143,14 +143,14 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   List<Widget> _particles(double t) {
     final widgets = <Widget>[];
 
-    for (int i = 0; i < particleCount; i++) {
+    for (int i = 0; i < _particleCount; i++) {
       final start = (500 + i * 50) / 4000;
       final end = (2500 + i * 50) / 4000;
       final p = interval(t, start, end);
 
       if (p <= 0) continue;
 
-      final angle = (2 * pi / particleCount) * i;
+      final angle = (2 * pi / _particleCount) * i;
 
       final motion = p <= 0.7
           ? Curves.easeOut.transform(p / 0.7)

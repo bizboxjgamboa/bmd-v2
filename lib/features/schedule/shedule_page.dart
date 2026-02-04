@@ -12,7 +12,7 @@ class SchedulePage extends StatefulWidget {
 }
 
 class _SchedulePageState extends State<SchedulePage> {
-  ScheduleView view = ScheduleView.day;
+  ScheduleView _view = ScheduleView.day;
 
   @override
   void initState() {
@@ -39,7 +39,7 @@ class _SchedulePageState extends State<SchedulePage> {
   Widget _buildTitle() {
     return DropdownButtonHideUnderline(
       child: DropdownButton<ScheduleView>(
-        value: view,
+        value: _view,
         isDense: true,
         items: const [
           DropdownMenuItem(value: ScheduleView.day, child: Text('Day')),
@@ -48,7 +48,7 @@ class _SchedulePageState extends State<SchedulePage> {
         ],
         onChanged: (v) {
           if (v == null) return;
-          setState(() => view = v);
+          setState(() => _view = v);
 
           // update appbar AFTER state change
           WidgetsBinding.instance.addPostFrameCallback((_) {
