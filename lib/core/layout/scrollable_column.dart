@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ScrollableColumn extends StatelessWidget {
-  const ScrollableColumn({super.key, required this.children});
+  const ScrollableColumn({
+    super.key,
+    required this.children,
+    this.spacing = 16,
+  });
 
   final List<Widget> children;
+  final double? spacing;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +28,11 @@ class ScrollableColumn extends StatelessWidget {
   }
 
   List<Widget> _withSpacing(List<Widget> children) {
+    if (spacing == null) return children;
+
     return [
       for (int i = 0; i < children.length; i++) ...[
-        if (i > 0) const SizedBox(height: 16),
+        if (i > 0) SizedBox(height: spacing),
         children[i],
       ],
     ];

@@ -1,4 +1,5 @@
 import 'package:bmd_v2/app/routing/app_router.dart';
+import 'package:bmd_v2/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class BmdApp extends StatelessWidget {
@@ -9,7 +10,7 @@ class BmdApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'BizBox MD',
       routerConfig: appRouter,
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+      theme: AppTheme.light(),
     );
   }
 }
