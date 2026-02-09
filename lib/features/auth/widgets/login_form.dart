@@ -26,12 +26,7 @@ class LoginForm extends StatelessWidget {
                 // });
               },
             ),
-            Text(
-              'Remember for 30 Days',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
-              ),
-            ),
+            const Text('Remember for 30 Days'),
           ],
         ),
         FilledButton(

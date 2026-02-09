@@ -1,134 +1,171 @@
+import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class AppTheme {
-  static const Color _seed = Color(0xFF123257);
+/// The [AppTheme] defines light and dark themes for the app.
+///
+/// Theme setup for FlexColorScheme package v8.
+/// Use same major flex_color_scheme package version. If you use a
+/// lower minor version, some properties may not be supported.
+/// In that case, remove them after copying this theme to your
+/// app or upgrade the package to version 8.4.0.
+///
+/// Use it in a [MaterialApp] like this:
+///
+/// MaterialApp(
+///   theme: AppTheme.light,
+///   darkTheme: AppTheme.dark,
+/// );
+abstract final class AppTheme {
+  // The FlexColorScheme defined light mode ThemeData.
+  static ThemeData light = FlexThemeData.light(
+    // User defined custom colors made with FlexSchemeColor() API.
+    colors: const FlexSchemeColor(
+      primary: Color(0xFF123257),
+      primaryContainer: Color(0xFFD0E4FF),
+      secondary: Color(0xFF004881),
+      secondaryContainer: Color(0xFFE5F2FF),
+      tertiary: Color(0xFFFF5F47),
+      tertiaryContainer: Color(0xFF95F0FF),
+      appBarColor: Color(0xFFE5F2FF),
+      error: Color(0xFFBA1A1A),
+      errorContainer: Color(0xFFFFDAD6),
+    ),
+    // Surface color adjustments.
+    surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
+    blendLevel: 1,
+    // Component theme configurations for light mode.
+    subThemesData: const FlexSubThemesData(
+      interactionEffects: true,
+      tintedDisabledControls: true,
+      blendOnLevel: 8,
+      useM2StyleDividerInM3: true,
+      defaultRadius: 12.0,
+      elevatedButtonSchemeColor: SchemeColor.onPrimaryContainer,
+      elevatedButtonSecondarySchemeColor: SchemeColor.primaryContainer,
+      outlinedButtonOutlineSchemeColor: SchemeColor.primary,
+      toggleButtonsBorderSchemeColor: SchemeColor.primary,
+      segmentedButtonSchemeColor: SchemeColor.primary,
+      segmentedButtonBorderSchemeColor: SchemeColor.primary,
+      unselectedToggleIsColored: true,
+      sliderValueTinted: true,
+      inputDecoratorSchemeColor: SchemeColor.primary,
+      inputDecoratorIsFilled: true,
+      inputDecoratorBackgroundAlpha: 31,
+      inputDecoratorBorderType: FlexInputBorderType.outline,
+      inputDecoratorUnfocusedHasBorder: false,
+      inputDecoratorFocusedBorderWidth: 1.0,
+      inputDecoratorPrefixIconSchemeColor: SchemeColor.primary,
+      fabUseShape: true,
+      fabAlwaysCircular: true,
+      fabSchemeColor: SchemeColor.tertiary,
+      popupMenuRadius: 8.0,
+      popupMenuElevation: 3.0,
+      alignedDropdown: true,
+      drawerIndicatorRadius: 12.0,
+      drawerIndicatorSchemeColor: SchemeColor.primary,
+      bottomNavigationBarMutedUnselectedLabel: false,
+      bottomNavigationBarMutedUnselectedIcon: false,
+      menuRadius: 8.0,
+      menuElevation: 3.0,
+      menuBarRadius: 0.0,
+      menuBarElevation: 2.0,
+      menuBarShadowColor: Color(0x00000000),
+      searchBarElevation: 1.0,
+      searchViewElevation: 1.0,
+      searchUseGlobalShape: true,
+      navigationBarSelectedLabelSchemeColor: SchemeColor.primary,
+      navigationBarSelectedIconSchemeColor: SchemeColor.onPrimary,
+      navigationBarIndicatorSchemeColor: SchemeColor.primary,
+      navigationBarIndicatorRadius: 12.0,
+      navigationRailSelectedLabelSchemeColor: SchemeColor.primary,
+      navigationRailSelectedIconSchemeColor: SchemeColor.onPrimary,
+      navigationRailUseIndicator: true,
+      navigationRailIndicatorSchemeColor: SchemeColor.primary,
+      navigationRailIndicatorOpacity: 1.00,
+      navigationRailIndicatorRadius: 12.0,
+      navigationRailBackgroundSchemeColor: SchemeColor.surface,
+    ),
+    // Direct ThemeData properties.
+    visualDensity: FlexColorScheme.comfortablePlatformDensity,
+    cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
+  );
 
-  static ThemeData light() {
-    final scheme = ColorScheme.fromSeed(
-      seedColor: _seed,
-      brightness: Brightness.light,
-      // Keep a clean medical look
-      surface: Colors.white,
-    );
-
-    return ThemeData(
-      useMaterial3: true,
-      colorScheme: scheme,
-
-      // Global background
-      scaffoldBackgroundColor: Colors.white,
-
-      // AppBar
-      appBarTheme: AppBarTheme(
-        backgroundColor: Colors.white,
-        foregroundColor: scheme.onSurface,
-        elevation: 0,
-        centerTitle: true,
-        surfaceTintColor: Colors.transparent,
-        titleTextStyle: TextStyle(
-          color: scheme.onSurface,
-          fontSize: 18,
-          fontWeight: FontWeight.w700,
-        ),
-      ),
-
-      // Cards / containers
-      cardTheme: CardThemeData(
-        color: scheme.surface,
-        elevation: 0,
-        surfaceTintColor: Colors.transparent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14),
-          side: BorderSide(color: scheme.outlineVariant),
-        ),
-        margin: EdgeInsets.zero,
-      ),
-
-      // Inputs (login & forms)
-      inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: scheme.surface,
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 14,
-          vertical: 14,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: scheme.outline),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: scheme.outline),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: scheme.primary, width: 1.6),
-        ),
-      ),
-
-      // Buttons (your navy primary actions)
-      filledButtonTheme: FilledButtonThemeData(
-        style: FilledButton.styleFrom(
-          backgroundColor: scheme.primary,
-          foregroundColor: scheme.onPrimary,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          textStyle: const TextStyle(fontWeight: FontWeight.w700),
-        ),
-      ),
-
-      // Secondary buttons
-      outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(
-          foregroundColor: scheme.primary,
-          side: BorderSide(color: scheme.outlineVariant),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          textStyle: const TextStyle(fontWeight: FontWeight.w700),
-        ),
-      ),
-
-      // Chips (tags like “Self-pay”, “Online”)
-      chipTheme: ChipThemeData(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
-        side: BorderSide(color: scheme.outlineVariant),
-        labelStyle: TextStyle(
-          color: scheme.onSurface,
-          fontWeight: FontWeight.w600,
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-      ),
-
-      // Bottom nav (looks like your mock)
-      navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        indicatorColor: scheme.primary.withAlpha(26),
-        labelTextStyle: WidgetStateProperty.all(
-          const TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
-        ),
-      ),
-
-      // Dividers
-      dividerTheme: DividerThemeData(
-        color: scheme.outlineVariant,
-        thickness: 1,
-        space: 1,
-      ),
-
-      // TextButton
-      textButtonTheme: TextButtonThemeData(
-        style: ButtonStyle(
-          minimumSize: const WidgetStatePropertyAll(Size.fromHeight(48)),
-          shape: WidgetStatePropertyAll(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-          ),
-        ).copyWith(minimumSize: const WidgetStatePropertyAll(Size.zero)),
-      ),
-    );
-  }
+  // The FlexColorScheme defined dark mode ThemeData.
+  static ThemeData dark = FlexThemeData.dark(
+    // User defined custom colors made with FlexSchemeColor() API.
+    colors: const FlexSchemeColor(
+      primary: Color(0xFF9FC9FF),
+      primaryContainer: Color(0xFF00325B),
+      primaryLightRef: Color(0x00000000), // The color of light mode primary
+      secondary: Color(0xFFFFB59D),
+      secondaryContainer: Color(0xFF872100),
+      secondaryLightRef: Color(0x00000000), // The color of light mode secondary
+      tertiary: Color(0xFF86D2E1),
+      tertiaryContainer: Color(0xFF004E59),
+      tertiaryLightRef: Color(0x00000000), // The color of light mode tertiary
+      appBarColor: Color(0xFFE5F2FF),
+      error: Color(0xFFFFB4AB),
+      errorContainer: Color(0xFF93000A),
+    ),
+    // Surface color adjustments.
+    surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
+    blendLevel: 2,
+    // Component theme configurations for dark mode.
+    subThemesData: const FlexSubThemesData(
+      interactionEffects: true,
+      tintedDisabledControls: true,
+      blendOnLevel: 10,
+      blendOnColors: true,
+      useM2StyleDividerInM3: true,
+      defaultRadius: 12.0,
+      elevatedButtonSchemeColor: SchemeColor.onPrimaryContainer,
+      elevatedButtonSecondarySchemeColor: SchemeColor.primaryContainer,
+      outlinedButtonOutlineSchemeColor: SchemeColor.primary,
+      toggleButtonsBorderSchemeColor: SchemeColor.primary,
+      segmentedButtonSchemeColor: SchemeColor.primary,
+      segmentedButtonBorderSchemeColor: SchemeColor.primary,
+      unselectedToggleIsColored: true,
+      sliderValueTinted: true,
+      inputDecoratorSchemeColor: SchemeColor.primary,
+      inputDecoratorIsFilled: true,
+      inputDecoratorBackgroundAlpha: 43,
+      inputDecoratorBorderType: FlexInputBorderType.outline,
+      inputDecoratorUnfocusedHasBorder: false,
+      inputDecoratorFocusedBorderWidth: 1.0,
+      inputDecoratorPrefixIconSchemeColor: SchemeColor.primary,
+      fabUseShape: true,
+      fabAlwaysCircular: true,
+      fabSchemeColor: SchemeColor.tertiary,
+      popupMenuRadius: 8.0,
+      popupMenuElevation: 3.0,
+      alignedDropdown: true,
+      drawerIndicatorRadius: 12.0,
+      drawerIndicatorSchemeColor: SchemeColor.primary,
+      bottomNavigationBarMutedUnselectedLabel: false,
+      bottomNavigationBarMutedUnselectedIcon: false,
+      menuRadius: 8.0,
+      menuElevation: 3.0,
+      menuBarRadius: 0.0,
+      menuBarElevation: 2.0,
+      menuBarShadowColor: Color(0x00000000),
+      searchBarElevation: 1.0,
+      searchViewElevation: 1.0,
+      searchUseGlobalShape: true,
+      navigationBarSelectedLabelSchemeColor: SchemeColor.primary,
+      navigationBarSelectedIconSchemeColor: SchemeColor.onPrimary,
+      navigationBarIndicatorSchemeColor: SchemeColor.primary,
+      navigationBarIndicatorRadius: 12.0,
+      navigationRailSelectedLabelSchemeColor: SchemeColor.primary,
+      navigationRailSelectedIconSchemeColor: SchemeColor.onPrimary,
+      navigationRailUseIndicator: true,
+      navigationRailIndicatorSchemeColor: SchemeColor.primary,
+      navigationRailIndicatorOpacity: 1.00,
+      navigationRailIndicatorRadius: 12.0,
+      navigationRailBackgroundSchemeColor: SchemeColor.surface,
+    ),
+    // Direct ThemeData properties.
+    visualDensity: FlexColorScheme.comfortablePlatformDensity,
+    cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
+  );
 }

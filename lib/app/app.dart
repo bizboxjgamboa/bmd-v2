@@ -10,7 +10,8 @@ class BmdApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'BizBox MD',
       routerConfig: appRouter,
-      theme: AppTheme.light(),
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
     );
   }
 }
