@@ -21,7 +21,9 @@ class LoginPage extends StatelessWidget {
           Text(
             'Login',
             textAlign: TextAlign.center,
-            style: theme.textTheme.headlineSmall,
+            style: theme.textTheme.headlineMedium?.copyWith(
+              color: theme.colorScheme.primary,
+            ),
           ),
           const SizedBox(height: 32),
           const LoginForm(),
@@ -30,9 +32,20 @@ class LoginPage extends StatelessWidget {
             alignment: WrapAlignment.center,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              const Text('New here? '),
+              Text(
+                'New here? ',
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.secondary,
+                ),
+              ),
               TextButton(
-                child: const Text('Create account'),
+                child: Text(
+                  'Create account',
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    color: theme.colorScheme.tertiary,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
                 onPressed: () {
                   // context.pushNamed(AppRoutes.signup.name);
                 },
@@ -41,7 +54,12 @@ class LoginPage extends StatelessWidget {
           ),
           Center(
             child: TextButton(
-              child: const Text('Forgot Password'),
+              child: Text(
+                'Forgot Password',
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.secondary,
+                ),
+              ),
               onPressed: () {
                 // context.pushNamed(AppRoutes.forgotPassword.name);
               },

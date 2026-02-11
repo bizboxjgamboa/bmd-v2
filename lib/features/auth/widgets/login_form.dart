@@ -7,6 +7,8 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Column(
       spacing: 16,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -26,12 +28,22 @@ class LoginForm extends StatelessWidget {
                 // });
               },
             ),
-            const Text('Remember for 30 Days'),
+            Text(
+              'Remember for 30 Days',
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.secondary,
+              ),
+            ),
           ],
         ),
         FilledButton(
           onPressed: () => {context.goHome()},
-          child: const Text('Sign in'),
+          child: Text(
+            'Sign in',
+            style: theme.textTheme.titleLarge?.copyWith(
+              color: theme.colorScheme.onPrimary,
+            ),
+          ),
         ),
       ],
     );
